@@ -1,0 +1,49 @@
+<h1>Employee</h1>
+
+<div class="container">
+  <div class="alert alert-warning" *ngIf="(firstName.dirty || employeeForm.submitted) && firstName.invalid">Enter
+    FirstName.</div>
+  <div class="alert alert-warning" *ngIf="(lastName.dirty || employeeForm.submitted) && lastName.invalid">Enter
+    LastName.</div>
+  <div class="alert alert-warning" *ngIf="(gender.dirty || employeeForm.submitted) && gender.invalid">Select Gender.
+  </div>
+  <div class="alert alert-warning" *ngIf="(department.dirty || employeeForm.submitted) && department.invalid">Enter
+    Department.
+  </div>
+  <form (ngSubmit)="!employeeForm.invalid && registerEmployee()" #employeeForm="ngForm">
+    <fieldset class="form-group">
+      <label>First Name</label>
+      <input type="text" [(ngModel)]="employee.firstName" class="form-control" name="firstName" required="required"
+        minlength="1" #firstName="ngModel">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Last Name</label>
+      <input type="text" [(ngModel)]="employee.lastName" class="form-control" name="lastName" required="required"
+        minlength="1" #lastName="ngModel">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Gender</label>
+      <select [(ngModel)]="employee.gender" class="form-control" name="gender" required="required" #gender="ngModel">
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Date of Birth</label>
+      <input type="date" [ngModel]="employee.dateOfBirth | date:'yyyy-MM-dd'"
+        (ngModelChange)="employee.dateOfBirth = $event" class="form-control" name="dateOfBirth" required="required">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Department</label>
+      <input type="text" [(ngModel)]="employee.department" class="form-control" name="department" required="required"
+        minlength="1" #department="ngModel">
+    </fieldset>
+
+    <button class="btn btn-primary" type="submit">Register</button>
+
+  </form>
+</div>

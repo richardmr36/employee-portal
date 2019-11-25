@@ -1,0 +1,25 @@
+<h1>List of Employees</h1>
+<div class="container">
+  <table class="table ">
+    <thead>
+      <tr>
+        <td>S.No.</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Gender</td>
+        <td>Date of Birth</td>
+        <td>Department</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees; let idx = index">
+        <td>{{idx + 1}}</td>
+        <td>{{employee.firstName}}</td>
+        <td>{{employee.lastName}}</td>
+        <td>{{employee.gender}}</td>
+        <td>{{employee.dateOfBirth | date}}</td>
+        <td>{{employee.department}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
